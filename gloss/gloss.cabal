@@ -35,6 +35,12 @@ Flag ExplicitBackend
                you to choose what window manager backend to use.
   Default:     False
 
+Flag OsAndroid
+  description:
+    Compile with compatibility for Android.
+  default:
+    False
+
 Library
   Build-Depends: 
         base       == 4.8.*,
@@ -45,6 +51,9 @@ Library
         GLUT       == 2.7.*,
         bmp        == 1.2.*,
         gloss-rendering == 1.10.*
+
+  if flag(OsAndroid)
+    constraints OpenGL +OsAndroid, GLUT +OsAndroid
 
   ghc-options:
         -O2 -Wall

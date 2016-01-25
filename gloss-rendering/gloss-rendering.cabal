@@ -13,6 +13,12 @@ description:
         don't do any window management. If you want gloss to setup your window as
         well then use the plain @gloss@ package.
 
+flag OsAndroid
+  description:
+    Compile with compatibility for Android
+  default:
+    False
+
 library
   exposed-modules:
         Graphics.Gloss.Rendering
@@ -34,6 +40,9 @@ library
         OpenGL     == 2.12.*,
         GLUT       == 2.7.*,
         bmp        == 1.2.*
+
+  if flag(OsAndroid)
+    constraints OpenGL +OsAndroid, GLUT +OsAndroid
 
   ghc-options:
         -Wall -O2
